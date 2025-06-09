@@ -15,13 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+const urlconn =
+  "mysql://root:XjFySZQGiXRqiCzqrAgCMLaECRRKQftj@mysql.railway.internal:3306/railway"; //
 // Set up MySQL connection using .env values
-const db = mysql.createConnection({
-  host: process.env.DB_HOST || "localhost",
-  user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "MYSQLPASS123",
-  database: process.env.DB_NAME || "auth_demo",
-});
+const db = mysql.createConnection(urlconn);
 
 // Connect to the database
 db.connect((err) => {
